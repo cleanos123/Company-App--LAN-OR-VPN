@@ -5,12 +5,12 @@
 class routingInterface{
 
 public:
-    WSADATA doSomething(WSADATA& wsaData);
+    void doSomething(WSADATA& wsaData);
 
 
 private:
-    WSADATA startup(WSADATA& wsaData);
-
+    int startup(WSADATA& wsaData);
+    int createSocket(SOCKET& serverSocket);
 };
 
 #endif // CONNECTINTERFACE_H

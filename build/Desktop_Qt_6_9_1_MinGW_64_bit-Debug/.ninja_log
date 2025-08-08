@@ -1,0 +1,9 @@
+# ninja log v6
+23	128	7763207304904582	Bank_App_autogen/timestamp	18efae5e180f410f
+23	128	7763207304904582	Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
+131	2209	7763207305984517	CMakeFiles/Bank_App.dir/mainwindow.cpp.obj	2e1f23cfdc3fb23
+23	128	7763207304904582	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/timestamp	18efae5e180f410f
+23	128	7763207304904582	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
+129	1978	7763207305964222	CMakeFiles/Bank_App.dir/main.cpp.obj	4d261e9aeaf48d6f
+519	2475	7762058402260069	CMakeFiles/Bank_App.dir/Bank_App_autogen/mocs_compilation.cpp.obj	da514037fd284825
+2209	2372	7763207326764231	Bank_App.exe	4b1ff33a05db9fdd

@@ -1,0 +1,107 @@
+/********************************************************************************
+** Form generated from reading UI file 'mainwindow.ui'
+**
+** Created by: Qt User Interface Compiler version 6.9.1
+**
+** WARNING! All changes made in this file will be lost when recompiling UI file!
+********************************************************************************/
+
+#ifndef UI_MAINWINDOW_H
+#define UI_MAINWINDOW_H
+
+#include <QtCore/QVariant>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QMainWindow>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QTextBrowser>
+#include <QtWidgets/QWidget>
+
+QT_BEGIN_NAMESPACE
+
+class Ui_MainWindow
+{
+public:
+    QWidget *centralwidget;
+    QLabel *label_2;
+    QLineEdit *inputPass;
+    QPushButton *loginBut;
+    QLineEdit *inputEmail;
+    QLabel *label_3;
+    QTextBrowser *textBrowser;
+
+    void setupUi(QMainWindow *MainWindow)
+    {
+        if (MainWindow->objectName().isEmpty())
+            MainWindow->setObjectName("MainWindow");
+        MainWindow->resize(955, 631);
+        centralwidget = new QWidget(MainWindow);
+        centralwidget->setObjectName("centralwidget");
+        label_2 = new QLabel(centralwidget);
+        label_2->setObjectName("label_2");
+        label_2->setEnabled(true);
+        label_2->setGeometry(QRect(410, 300, 121, 31));
+        QFont font;
+        font.setFamilies({QString::fromUtf8("TI-Nspire")});
+        font.setPointSize(20);
+        label_2->setFont(font);
+        label_2->setLineWidth(1);
+        inputPass = new QLineEdit(centralwidget);
+        inputPass->setObjectName("inputPass");
+        inputPass->setGeometry(QRect(330, 340, 301, 31));
+        QFont font1;
+        font1.setFamilies({QString::fromUtf8("TI-Nspire")});
+        inputPass->setFont(font1);
+        loginBut = new QPushButton(centralwidget);
+        loginBut->setObjectName("loginBut");
+        loginBut->setGeometry(QRect(400, 460, 141, 51));
+        inputEmail = new QLineEdit(centralwidget);
+        inputEmail->setObjectName("inputEmail");
+        inputEmail->setGeometry(QRect(330, 190, 301, 31));
+        inputEmail->setFont(font1);
+        label_3 = new QLabel(centralwidget);
+        label_3->setObjectName("label_3");
+        label_3->setEnabled(true);
+        label_3->setGeometry(QRect(420, 150, 121, 31));
+        label_3->setFont(font);
+        label_3->setLineWidth(1);
+        textBrowser = new QTextBrowser(centralwidget);
+        textBrowser->setObjectName("textBrowser");
+        textBrowser->setGeometry(QRect(370, 30, 211, 81));
+        QFont font2;
+        font2.setFamilies({QString::fromUtf8("TI-Nspire")});
+        font2.setPointSize(36);
+        textBrowser->setFont(font2);
+        MainWindow->setCentralWidget(centralwidget);
+
+        retranslateUi(MainWindow);
+
+        QMetaObject::connectSlotsByName(MainWindow);
+    } // setupUi
+
+    void retranslateUi(QMainWindow *MainWindow)
+    {
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindow", "Password:", nullptr));
+        loginBut->setText(QCoreApplication::translate("MainWindow", "Login", nullptr));
+        label_3->setText(QCoreApplication::translate("MainWindow", "Email:", nullptr));
+        textBrowser->setHtml(QCoreApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"hr { height: 1px; border-width: 0; }\n"
+"li.unchecked::marker { content: \"\\2610\"; }\n"
+"li.checked::marker { content: \"\\2612\"; }\n"
+"</style></head><body style=\" font-family:'TI-Nspire'; font-size:36pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Star Bank</span></p></body></html>", nullptr));
+    } // retranslateUi
+
+};
+
+namespace Ui {
+    class MainWindow: public Ui_MainWindow {};
+} // namespace Ui
+
+QT_END_NAMESPACE
+
+#endif // UI_MAINWINDOW_H

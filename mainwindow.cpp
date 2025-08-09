@@ -1,10 +1,11 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include "connectinterface.h"
 #include <cstring>
 #include <QString>
 #include <iostream>
 #include <Qdebug>
-#include <>
+#include <winsock2.h>
 
 std::string email = "";
 std::string password = "";

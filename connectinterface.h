@@ -2,15 +2,15 @@
 #define CONNECTINTERFACE_H
 #include <winsock2.h>
 
-class routingInterface{
+class routingInterface {
+private:
+    WSADATA Data;
+
 
 public:
-    void doSomething(WSADATA& wsaData);
-
-
-private:
-    int startup(WSADATA& wsaData);
-    int createSocket(SOCKET& serverSocket);
+    int serverStartup();
+    int clientStartup();
+    routingInterface();
 };
 
 #endif // CONNECTINTERFACE_H

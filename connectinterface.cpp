@@ -23,14 +23,17 @@ int routingInterface::createSocket(SOCKET& serverSocket){
     if(serverSocket == INVALID_SOCKET){
         std::cout << "Error at socket():" << WSAGetLastError() << std::endl;
         WSACleanup();
-        return 0;
+        return 1;
     }
     else{
         std::cout << "socket() is OK!"<<std::endl;
+        return 0;
     }
     //dont forget to close socket
     //WSACleanup(); and clean up
 }
+
+
 void routingInterface::doSomething(WSADATA& wsaData){
     std::cout << "Something" << std::endl;
 }

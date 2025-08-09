@@ -12,7 +12,8 @@ private:
 public:
     int serverStartup();
     int clientStartup();
-    int sendData(char metaData[]);
+    int sendData(char metaData[], int type);
+    int receiveData();
     routingInterface();
 };
 

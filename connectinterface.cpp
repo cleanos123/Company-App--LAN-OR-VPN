@@ -52,7 +52,16 @@ int routingInterface::startup(WSADATA& wsaData){
         std::cout << "listen() is OK, I'm waiting for connections..." << std::endl;
     }
     //STEP 5 Accept a connection accept(), connect()
+    SOCKET acceptSocket;
+    acceptSocket = accept(serverSocket, NULL, NULL);
+        if(acceptSocket == INVALID_SOCKET){
+            std::cout << "accept failed:" << WSAGetLastError() << std::endl;
+            WSACleanup();
+            return -1;
+    }
 
+
+    return 0;
 }
 
 void routingInterface::doSomething(WSADATA& wsaData){

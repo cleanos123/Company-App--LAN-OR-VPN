@@ -23,7 +23,6 @@ int routingInterface::serverStartup() {
     }
 
     //STEP 2 CREATE SOCKET
-    SOCKET serverSocket;
     serverSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     if (serverSocket == INVALID_SOCKET) {
         std::cout << "Error at socket():" << WSAGetLastError() << std::endl;
@@ -58,7 +57,6 @@ int routingInterface::serverStartup() {
         std::cout << "listen() is OK, I'm waiting for connections..." << std::endl;
     }
     //STEP 5 Accept a connection accept(), connect()
-    SOCKET acceptSocket;
     acceptSocket = accept(serverSocket, NULL, NULL);
     if (acceptSocket == INVALID_SOCKET) {
         std::cout << "accept failed:" << WSAGetLastError() << std::endl;
@@ -88,7 +86,6 @@ int routingInterface::clientStartup() {
         std::cout << "The status:" << &Data.szSystemStatus << std::endl;
     }
     //STEP 2 CREATE SOCKET
-    SOCKET clientSocket;
     clientSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     if (clientSocket == INVALID_SOCKET) {
         std::cout << "Error at socket():" << WSAGetLastError() << std::endl;
@@ -114,6 +111,17 @@ int routingInterface::clientStartup() {
         std::cout << "Client: Can start sending and recieving data..." << std::endl;
     }
 
+    return 0;
+}
+int routingInterface::sendData(char metaData[]){
+    int byteCount = send(clientSocket, metaData, strlen(metaData), 0);
+    if(byteCount == SOCKET_ERROR){
+        printf("Server send error %ld.\n", WSAGetLastError());
+        return -1;
+    }
+    else{
+        printf("Server: sent %ld bytes \n", byteCount);
+    }
 
     return 0;
 }

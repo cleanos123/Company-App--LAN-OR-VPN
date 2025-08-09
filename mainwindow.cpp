@@ -34,7 +34,7 @@ void MainWindow::on_loginBut_clicked()
 {
     email = ui->inputEmail->text().toStdString();
     password = ui->inputPass->text().toStdString();  //moves email and password to be sent to database (not in Qstring)
-
+    std::string data = email + "\n" + password;
 }
 
 

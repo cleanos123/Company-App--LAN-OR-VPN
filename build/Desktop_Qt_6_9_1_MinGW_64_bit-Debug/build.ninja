@@ -92,7 +92,7 @@ build CMakeFiles/Bank_App.dir/connectinterface.cpp.obj: CXX_COMPILER__Bank_App_u
 build Bank_App.exe: CXX_EXECUTABLE_LINKER__Bank_App_Debug CMakeFiles/Bank_App.dir/Bank_App_autogen/mocs_compilation.cpp.obj CMakeFiles/Bank_App.dir/main.cpp.obj CMakeFiles/Bank_App.dir/mainwindow.cpp.obj CMakeFiles/Bank_App.dir/connectinterface.cpp.obj | C$:/Qt/6.9.1/mingw_64/lib/libQt6Widgets.a C$:/Qt/6.9.1/mingw_64/lib/libQt6Gui.a C$:/Qt/6.9.1/mingw_64/lib/libQt6Core.a C$:/Qt/6.9.1/mingw_64/lib/libQt6EntryPoint.a || Bank_App_autogen Bank_App_autogen_timestamp_deps
   FLAGS = -DQT_QML_DEBUG -g
   LINK_FLAGS = -mwindows
-  LINK_LIBRARIES = C:/Qt/6.9.1/mingw_64/lib/libQt6Widgets.a  C:/Qt/6.9.1/mingw_64/lib/libQt6Gui.a  C:/Qt/6.9.1/mingw_64/lib/libQt6Core.a  -lmpr  -luserenv  -lmingw32  C:/Qt/6.9.1/mingw_64/lib/libQt6EntryPoint.a  -lshell32  -ld3d11  -ldxgi  -ldxguid  -ld3d12  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  LINK_LIBRARIES = C:/Qt/6.9.1/mingw_64/lib/libQt6Widgets.a  -lws2_32  C:/Qt/6.9.1/mingw_64/lib/libQt6Gui.a  C:/Qt/6.9.1/mingw_64/lib/libQt6Core.a  -lmpr  -luserenv  -lmingw32  C:/Qt/6.9.1/mingw_64/lib/libQt6EntryPoint.a  -lshell32  -ld3d11  -ldxgi  -ldxguid  -ld3d12  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Bank_App.dir
   POST_BUILD = cd .
   PRE_LINK = cd .

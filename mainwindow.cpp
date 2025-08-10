@@ -12,6 +12,7 @@ std::string email = "";
 std::string password = "";
 const int CLIENT = 1;
 const int SERVER = 2;
+
 //THIS FUNCTION IS TO TRANSFORM INTO CSTRING BUT NOT CONST BECAUSE OF PARAM ISSUES
 char* string2Cstr(std::string myStr){
     char* text = new char[myStr.length()+1];
@@ -26,7 +27,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    user.serverStartup();
+    user.clientStartup();
+    std::cout << "Client is setup!!" << std::endl;
 }
 
 MainWindow::~MainWindow()

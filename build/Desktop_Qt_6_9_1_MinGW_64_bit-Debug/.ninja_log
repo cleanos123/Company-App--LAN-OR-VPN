@@ -1,9 +1,16 @@
 # ninja log v6
-23	128	7763207304904582	Bank_App_autogen/timestamp	18efae5e180f410f
-23	128	7763207304904582	Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-131	2209	7763207305984517	CMakeFiles/Bank_App.dir/mainwindow.cpp.obj	2e1f23cfdc3fb23
-23	128	7763207304904582	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/timestamp	18efae5e180f410f
-23	128	7763207304904582	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-129	1978	7763207305964222	CMakeFiles/Bank_App.dir/main.cpp.obj	4d261e9aeaf48d6f
+26	128	7764928622317657	Bank_App_autogen/timestamp	18efae5e180f410f
+26	128	7764928622317657	Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
+129	3424	7764928623345351	CMakeFiles/Bank_App.dir/mainwindow.cpp.obj	2e1f23cfdc3fb23
+26	128	7764928622317657	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/timestamp	18efae5e180f410f
+26	128	7764928622317657	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
+182	2026	7764923341714519	CMakeFiles/Bank_App.dir/main.cpp.obj	4d261e9aeaf48d6f
 519	2475	7762058402260069	CMakeFiles/Bank_App.dir/Bank_App_autogen/mocs_compilation.cpp.obj	da514037fd284825
 2209	2372	7763207326764231	Bank_App.exe	4b1ff33a05db9fdd
+131	1473	7764928623365357	CMakeFiles/Bank_App.dir/connectinterface.cpp.obj	54208a48366ccd79
+17	123	7764933501437559	Bank_App_autogen/timestamp	18efae5e180f410f
+17	123	7764933501437559	Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
+17	123	7764933501437559	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/timestamp	18efae5e180f410f
+17	123	7764933501437559	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
+124	3245	7764933502509950	CMakeFiles/Bank_App.dir/mainwindow.cpp.obj	2e1f23cfdc3fb23
+3245	3422	7764933533714569	Bank_App.exe	fc2741b6cdbac6f6

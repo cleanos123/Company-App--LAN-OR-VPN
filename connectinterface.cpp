@@ -9,6 +9,12 @@
 // SERVER SIDE
 routingInterface::routingInterface() {
 }
+routingInterface::~routingInterface(){
+    if (clientSocket != INVALID_SOCKET) closesocket(clientSocket);
+    if (serverSocket != INVALID_SOCKET) closesocket(serverSocket);
+    if (acceptSocket != INVALID_SOCKET) closesocket(acceptSocket);
+    WSACleanup();
+}
 int routingInterface::serverStartup() {
     std::cout << "SERVER INITIALIZING" << std::endl;
     int wsaerr;
@@ -142,15 +148,15 @@ int routingInterface::sendData(char metaData[], int type) {
     return 0;
 }
 
-int routingInterface::receiveData() {
+std::string routingInterface::receiveData() {
     char receiveBuffer[200] = "";
     int byteCount = recv(acceptSocket, receiveBuffer, sizeof(receiveBuffer), 0);
     if (byteCount < 0) {
         printf("Client:erro %ld.\n", WSAGetLastError());
-        return 0;
+        return "";
     }
     else {
         printf("Received data: %s \n", receiveBuffer);
     }
-    return 0;
+    return receiveBuffer;
 }

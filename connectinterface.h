@@ -1,6 +1,8 @@
 #ifndef CONNECTINTERFACE_H
 #define CONNECTINTERFACE_H
 #include <winsock2.h>
+#include <ws2tcpip.h>
+#include <string>
 
 class routingInterface {
 private:
@@ -13,8 +15,10 @@ public:
     int serverStartup();
     int clientStartup();
     int sendData(char metaData[], int type);
-    int receiveData();
+    std::string receiveData();
     routingInterface();
+    ~routingInterface();
+    void cleanup();
 };
 
 #endif // CONNECTINTERFACE_H

@@ -3,10 +3,11 @@
 #include "connectinterface.h"
 #include <Windef.h>
 #include <tchar.h>
+#include <string>
 #include <ws2tcpip.h>
 
 // SERVER SIDE
-routingInterface::routingInterface(){
+routingInterface::routingInterface() {
 }
 int routingInterface::serverStartup() {
     std::cout << "SERVER INITIALIZING" << std::endl;
@@ -89,7 +90,7 @@ int routingInterface::clientStartup() {
         std::cout << "The status:" << &Data.szSystemStatus << std::endl;
     }
     //STEP 2 CREATE SOCKET
-    while (usrInput == ""){
+    while (usrInput == "") {
         clientSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 
         if (clientSocket == INVALID_SOCKET) {
@@ -102,7 +103,7 @@ int routingInterface::clientStartup() {
             std::cout << "socket() is OK!" << std::endl;
         }
 
-    //STEP 3 CONNECT
+        //STEP 3 CONNECT
         ZeroMemory(&clientService, sizeof(clientService));
         clientService.sin_family = AF_INET;
         InetPton(AF_INET, _T("192.168.4.25"), &clientService.sin_addr.s_addr);
@@ -113,10 +114,9 @@ int routingInterface::clientStartup() {
             std::cout << "Press ENTER to scan again.";
             std::getline(std::cin, usrInput);
             closesocket(clientSocket);
-            return 1;
         }
 
-        else{
+        else {
             std::cout << "Client: connect() is OK." << std::endl;
             std::cout << "Client: Can start sending and recieving data..." << std::endl;
             break;
@@ -124,33 +124,33 @@ int routingInterface::clientStartup() {
     }
     return 0;
 }
-int routingInterface::sendData(char metaData[],int type){
+int routingInterface::sendData(char metaData[], int type) {
     int byteCount = 0;
-    if(type == 1){
+    if (type == 1) {
         byteCount = send(clientSocket, metaData, strlen(metaData), 0);
     }
-    else{
+    else {
         byteCount = send(serverSocket, metaData, strlen(metaData), 0);
     }
-    if(byteCount == SOCKET_ERROR){
+    if (byteCount == SOCKET_ERROR) {
         printf("Server send error %ld.\n", WSAGetLastError());
         return -1;
     }
-    else{
+    else {
         printf("Server: sent %ld bytes \n", byteCount);
     }
     return 0;
 }
 
-int routingInterface::receiveData(){
+int routingInterface::receiveData() {
     char receiveBuffer[200] = "";
     int byteCount = recv(acceptSocket, receiveBuffer, sizeof(receiveBuffer), 0);
-    if (byteCount < 0){
+    if (byteCount < 0) {
         printf("Client:erro %ld.\n", WSAGetLastError());
         return 0;
     }
-    else{
-        printf("Received data: %s \n",receiveBuffer);
+    else {
+        printf("Received data: %s \n", receiveBuffer);
     }
     return 0;
 }

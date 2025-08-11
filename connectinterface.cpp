@@ -5,21 +5,38 @@
 #include <tchar.h>
 #include <string>
 #include <ws2tcpip.h>
+#include <thread>
+#include <mutex>
+
+//HELPER FUNCTIONS/////////////////////////////////////////////////////
+void receiveData(SOCKET cliSocket);
+bool findSock(const std::vector <SOCKET>& vect, SOCKET aS) {
+    for (SOCKET elem : vect) {
+        if (elem == aS)
+            return true;
+    }
+    return false;
+}
 
 // SERVER SIDE
 routingInterface::routingInterface() {
 }
-routingInterface::~routingInterface(){
+routingInterface::~routingInterface() {
+    for (auto& t : threads) {
+        if (t.joinable()) t.join();
+    }
+    // Close sockets and WSACleanup
     if (clientSocket != INVALID_SOCKET) closesocket(clientSocket);
     if (serverSocket != INVALID_SOCKET) closesocket(serverSocket);
     if (acceptSocket != INVALID_SOCKET) closesocket(acceptSocket);
     WSACleanup();
 }
 int routingInterface::serverStartup() {
+    deviceType = 0;
     std::cout << "SERVER INITIALIZING" << std::endl;
-    int wsaerr;
+
     WORD wVersionRequested = MAKEWORD(2, 2);
-    wsaerr = WSAStartup(wVersionRequested, &Data);
+    int wsaerr = WSAStartup(wVersionRequested, &Data);
     if (wsaerr != 0) {
         std::cout << "The Winsock2 dll not found!" << std::endl;
         return 1;
@@ -47,6 +64,7 @@ int routingInterface::serverStartup() {
     serverService.sin_family = AF_INET;
     InetPton(AF_INET, _T("192.168.4.25"), &serverService.sin_addr.s_addr);
     serverService.sin_port = htons(27105);
+
     if (bind(serverSocket, (SOCKADDR*)&serverService, sizeof(serverService)) == SOCKET_ERROR) {
         std::cout << "bind() failed: " << WSAGetLastError() << std::endl;
         closesocket(serverSocket);
@@ -57,29 +75,42 @@ int routingInterface::serverStartup() {
         std::cout << "bind() is OK!" << std::endl;
     }
     //STEP 4 LISTEN ON THE SOCKET listen()
-    if (listen(serverSocket, 1) == SOCKET_ERROR) {
+    if (listen(serverSocket, SOMAXCONN) == SOCKET_ERROR) {
         std::cout << "listen(): Error listening on socket" << WSAGetLastError() << std::endl;
+        closesocket(serverSocket);
+        WSACleanup();
     }
     else {
         std::cout << "listen() is OK, I'm waiting for connections..." << std::endl;
     }
     //STEP 5 Accept a connection accept(), connect()
-    acceptSocket = accept(serverSocket, NULL, NULL);
-    if (acceptSocket == INVALID_SOCKET) {
-        std::cout << "accept failed:" << WSAGetLastError() << std::endl;
-        closesocket(acceptSocket);
-        closesocket(serverSocket);
-        WSACleanup();
-        return -1;
+    while (true) {
+        SOCKET acceptSock = accept(serverSocket, NULL, NULL);
+        std::cout << "accept() returned socket: " << acceptSock << std::endl;
+        if (acceptSock == INVALID_SOCKET) {
+            std::cout << "accept() failed: " << WSAGetLastError() << std::endl;
+            // Depending on design, you may continue or break
+            continue;
+        }
+
+        threads.emplace_back(receiveData, acceptSock);
+        {
+            std::lock_guard<std::mutex> lock(queueMutex);
+            if (!findSock(queueList, acceptSock)) {
+                queueList.push_back(acceptSock);
+            }
+        }
+        std::cout << "New client connected, socket: " << acceptSock << std::endl;
     }
 
-
+    for (auto& t : threads){
+        if (t.joinable()) t.join();
+    }
     return 0;
 }
-
-
-//Client Side
-int routingInterface::clientStartup() {
+//Client Side////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+int routingInterface::clientStartup(){
+    deviceType = 1;
     std::string usrInput = "";
     sockaddr_in clientService;
 
@@ -130,14 +161,23 @@ int routingInterface::clientStartup() {
     }
     return 0;
 }
-int routingInterface::sendData(char metaData[], int type) {
-    int byteCount = 0;
-    if (type == 1) {
-        byteCount = send(clientSocket, metaData, strlen(metaData), 0);
+SOCKET routingInterface::getSock(){
+    if(!deviceType)
+        return serverSocket;
+    else
+        return clientSocket;
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+int routingInterface::sendData(const char* metaData, SOCKET sock) {
+    if (metaData == nullptr) {
+        printf("sendData error: metaData is null\n.");
+        return -1;
     }
-    else {
-        byteCount = send(serverSocket, metaData, strlen(metaData), 0);
+    if (sock == INVALID_SOCKET) {
+        printf("sendData error: Invalid Socket.\n");
+        return - 1;
     }
+    int byteCount = send(sock, metaData, strlen(metaData), 0);
     if (byteCount == SOCKET_ERROR) {
         printf("Server send error %ld.\n", WSAGetLastError());
         return -1;
@@ -147,16 +187,25 @@ int routingInterface::sendData(char metaData[], int type) {
     }
     return 0;
 }
-
-std::string routingInterface::receiveData() {
-    char receiveBuffer[200] = "";
-    int byteCount = recv(acceptSocket, receiveBuffer, sizeof(receiveBuffer), 0);
-    if (byteCount < 0) {
-        printf("Client:erro %ld.\n", WSAGetLastError());
-        return "";
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void receiveData(SOCKET cliSocket) {
+    std::cout << "Thread started for socket: " << cliSocket << std::endl;
+    char receiveBuffer[1024];
+    while (true) {
+        int byteCount = recv(cliSocket, receiveBuffer, sizeof(receiveBuffer) - 1, 0);
+        if (byteCount > 0) {
+            receiveBuffer[byteCount] = '\0';
+            printf("[Thread] received login data: %s\n", receiveBuffer);
+        }
+        else if (byteCount == 0) {
+            printf("[Thread] disconnected");
+            break;
+        }
+        else {
+            printf("[Thread] recv() failed: %d\n", WSAGetLastError());
+            break;
+        }
     }
-    else {
-        printf("Received data: %s \n", receiveBuffer);
-    }
-    return receiveBuffer;
+    closesocket(cliSocket);
+    std::cout << "Thread ending for socket: " << cliSocket << std::endl;
 }

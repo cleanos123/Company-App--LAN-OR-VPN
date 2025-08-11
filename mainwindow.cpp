@@ -50,9 +50,7 @@ void MainWindow::on_loginBut_clicked()
     std::string data = email + "\n" + password;
     char* newData;
     newData = string2Cstr(data);
-    user.sendData(newData, CLIENT);
-    delete[] newData;
-    newData = nullptr;
+    user.sendData(newData, user.getSock());
 }
 
 

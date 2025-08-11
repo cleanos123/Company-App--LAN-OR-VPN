@@ -7,9 +7,9 @@
 #include <ws2tcpip.h>
 #include <thread>
 #include <mutex>
+#include <algorithm>
 
 //HELPER FUNCTIONS/////////////////////////////////////////////////////
-void receiveData(SOCKET cliSocket);
 bool findSock(const std::vector <SOCKET>& vect, SOCKET aS) {
     for (SOCKET elem : vect) {
         if (elem == aS)
@@ -22,9 +22,7 @@ bool findSock(const std::vector <SOCKET>& vect, SOCKET aS) {
 routingInterface::routingInterface() {
 }
 routingInterface::~routingInterface() {
-    for (auto& t : threads) {
-        if (t.joinable()) t.join();
-    }
+
     // Close sockets and WSACleanup
     if (clientSocket != INVALID_SOCKET) closesocket(clientSocket);
     if (serverSocket != INVALID_SOCKET) closesocket(serverSocket);
@@ -56,7 +54,7 @@ int routingInterface::serverStartup() {
     else {
         std::cout << "socket() is OK!" << std::endl;
     }
-    //dont forget to close socket
+    //dont forget to close certain sockets for future implementations and to free up space
     //WSACleanup(); and clean up
 
     //CREATING BIND STEP 3 bind()
@@ -89,27 +87,23 @@ int routingInterface::serverStartup() {
         std::cout << "accept() returned socket: " << acceptSock << std::endl;
         if (acceptSock == INVALID_SOCKET) {
             std::cout << "accept() failed: " << WSAGetLastError() << std::endl;
-            // Depending on design, you may continue or break
+            // Change design
             continue;
         }
-
-        threads.emplace_back(receiveData, acceptSock);
         {
             std::lock_guard<std::mutex> lock(queueMutex);
-            if (!findSock(queueList, acceptSock)) {
-                queueList.push_back(acceptSock);
+            if (!findSock(clients, acceptSock)) {
+                clients.push_back(acceptSock);
             }
         }
-        std::cout << "New client connected, socket: " << acceptSock << std::endl;
-    }
 
-    for (auto& t : threads){
-        if (t.joinable()) t.join();
+        std::thread(&routingInterface::receiveData, this, acceptSock).detach();
+        std::cout << "New client connected, socket: " << acceptSock << std::endl;
     }
     return 0;
 }
 //Client Side////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-int routingInterface::clientStartup(){
+int routingInterface::clientStartup() {
     deviceType = 1;
     std::string usrInput = "";
     sockaddr_in clientService;
@@ -161,8 +155,8 @@ int routingInterface::clientStartup(){
     }
     return 0;
 }
-SOCKET routingInterface::getSock(){
-    if(!deviceType)
+SOCKET routingInterface::getSock() {
+    if (!deviceType)
         return serverSocket;
     else
         return clientSocket;
@@ -175,7 +169,7 @@ int routingInterface::sendData(const char* metaData, SOCKET sock) {
     }
     if (sock == INVALID_SOCKET) {
         printf("sendData error: Invalid Socket.\n");
-        return - 1;
+        return -1;
     }
     int byteCount = send(sock, metaData, strlen(metaData), 0);
     if (byteCount == SOCKET_ERROR) {
@@ -188,14 +182,17 @@ int routingInterface::sendData(const char* metaData, SOCKET sock) {
     return 0;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void receiveData(SOCKET cliSocket) {
+void routingInterface::receiveData(SOCKET cliSocket) {
     std::cout << "Thread started for socket: " << cliSocket << std::endl;
     char receiveBuffer[1024];
     while (true) {
-        int byteCount = recv(cliSocket, receiveBuffer, sizeof(receiveBuffer) - 1, 0);
+        int byteCount = recv(cliSocket, receiveBuffer, sizeof(receiveBuffer), 0);
         if (byteCount > 0) {
             receiveBuffer[byteCount] = '\0';
             printf("[Thread] received login data: %s\n", receiveBuffer);
+
+            std::string reply = "Message received\n"; // CHANGE INTO FUNCTION THAT SENDS "OK" signal TO CLIENT
+            send(cliSocket, reply.c_str(), reply.size(), 0);
         }
         else if (byteCount == 0) {
             printf("[Thread] disconnected");
@@ -204,6 +201,13 @@ void receiveData(SOCKET cliSocket) {
         else {
             printf("[Thread] recv() failed: %d\n", WSAGetLastError());
             break;
+        }
+    }
+    {
+        std::lock_guard<std::mutex> lock(queueMutex);
+        auto it = std::find(clients.begin(), clients.end(), cliSocket);
+        if (it != clients.end()) {
+            clients.erase(it);
         }
     }
     closesocket(cliSocket);

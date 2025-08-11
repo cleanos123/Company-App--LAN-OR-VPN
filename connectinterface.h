@@ -14,8 +14,7 @@ private:
     SOCKET clientSocket;
     SOCKET acceptSocket;
     SOCKET serverSocket;
-    std::vector <SOCKET> queueList;
-    std::vector <std::thread> threads;
+    std::vector <SOCKET> clients;
     std::mutex queueMutex;
     int deviceType;
 
@@ -24,6 +23,7 @@ public:
     int serverStartup();
     int clientStartup();
     int sendData(const char* metaData, SOCKET socket);
+    void receiveData(SOCKET socket);
     routingInterface();
     ~routingInterface();
     SOCKET getSock();

@@ -53,9 +53,10 @@ public:
         QFont font1;
         font1.setFamilies({QString::fromUtf8("TI-Nspire")});
         inputPass->setFont(font1);
+        inputPass->setEchoMode(QLineEdit::EchoMode::Password);
         loginBut = new QPushButton(centralwidget);
         loginBut->setObjectName("loginBut");
-        loginBut->setGeometry(QRect(400, 460, 141, 51));
+        loginBut->setGeometry(QRect(380, 420, 211, 91));
         inputEmail = new QLineEdit(centralwidget);
         inputEmail->setObjectName("inputEmail");
         inputEmail->setGeometry(QRect(330, 190, 301, 31));
@@ -84,6 +85,7 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "Password:", nullptr));
+        inputPass->setText(QString());
         loginBut->setText(QCoreApplication::translate("MainWindow", "Login", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "Email:", nullptr));
         textBrowser->setHtml(QCoreApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"

@@ -12,6 +12,7 @@ std::string email = "";
 std::string password = "";
 const int CLIENT = 1;
 const int SERVER = 2;
+QString empty = "";
 
 //THIS FUNCTION IS TO TRANSFORM INTO CSTRING BUT NOT CONST BECAUSE OF PARAM ISSUES
 
@@ -38,10 +39,17 @@ bool isValid(){
 
 void MainWindow::on_loginBut_clicked()
 {
-    email = ui->inputEmail->text().toStdString();
-    password = ui->inputPass->text().toStdString();  //moves email and password to be sent to database (not in Qstring)
-    std::string data = "0\n" + email + "\n" + password;
-    user.sendData(data.c_str(), user.getSock());
+    if (ui->inputEmail->text() == empty){
+        std::cout << "NO EMAIL TEXT" << std::endl;
+    }
+    else if (ui->inputPass->text() == empty){
+        std::cout << "NO PASSWORD TEXT" << std::endl;
+    }
+    else{
+        email = ui->inputEmail->text().toStdString();
+        password = ui->inputPass->text().toStdString();  //moves email and password to be sent to database (not in Qstring)
+        std::string data = "0\n" + email + "\n" + password;
+        user.sendData(data.c_str(), user.getSock());
+    }
+
 }
-
-

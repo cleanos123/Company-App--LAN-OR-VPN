@@ -245,7 +245,7 @@ bool routingInterface::checkPy(SOCKET socket) {
     std::string reply;
     byteCount = recv(socket, receiveBuffer, sizeof(receiveBuffer) - 1, 0);
     receiveBuffer[byteCount] = '\0';
-    if (!(std::strcmp(receiveBuffer,"Python"))) {
+    if (!(strcmp(receiveBuffer,"Python"))) {
         reply = "OK";
         std::cout << "PYTHON IS FOUND" << std::endl;
         send(socket, reply.c_str(), reply.size(), 0);

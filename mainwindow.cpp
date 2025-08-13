@@ -39,11 +39,22 @@ bool isValid(){
 
 void MainWindow::on_loginBut_clicked()
 {
+    const QColor c(0xffe00000);
     if (ui->inputEmail->text() == empty){
-        std::cout << "NO EMAIL TEXT" << std::endl;
+        ui->emailText->setTextColor(c);
+        ui->emailText->setText("No Email inputted");
     }
-    else if (ui->inputPass->text() == empty){
-        std::cout << "NO PASSWORD TEXT" << std::endl;
+    else{
+        ui->emailText->setText("");
+    }
+    if (ui->inputPass->text() == empty){
+        ui->passText->setTextColor(c);
+        ui->passText->setText("No password inputted");
+    }
+    else{
+        ui->passText->setText("");
+    }
+    if(ui->inputEmail->text() == empty || ui->inputPass->text() == empty){
     }
     else{
         email = ui->inputEmail->text().toStdString();

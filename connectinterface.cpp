@@ -7,7 +7,6 @@
 #include <ws2tcpip.h>
 #include <thread>
 #include <mutex>
-#include <algorithm>
 
 //HELPER FUNCTIONS/////////////////////////////////////////////////////
 bool findSock(const std::vector <SOCKET>& vect, SOCKET aS) {
@@ -17,6 +16,7 @@ bool findSock(const std::vector <SOCKET>& vect, SOCKET aS) {
     }
     return false;
 }
+//////////////////////////////////////
 
 // SERVER SIDE
 routingInterface::routingInterface() {
@@ -31,6 +31,7 @@ routingInterface::~routingInterface() {
 }
 int routingInterface::serverStartup() {
     deviceType = 0;
+    char ipStr[INET_ADDRSTRLEN];
     std::cout << "SERVER INITIALIZING" << std::endl;
 
     WORD wVersionRequested = MAKEWORD(2, 2);
@@ -81,6 +82,23 @@ int routingInterface::serverStartup() {
     else {
         std::cout << "listen() is OK, I'm waiting for connections..." << std::endl;
     }
+    // STEP 4.5 ACCEPT PYTHON CONNECTION FIRST
+    while (true) {
+        SOCKET acceptSock = accept(serverSocket, NULL, NULL);
+        std::cout << "accept() returned socket: " << acceptSock << std::endl;
+        if (acceptSock == INVALID_SOCKET) {
+            std::cout << "accept() failed: " << WSAGetLastError() << std::endl;
+            continue;
+        }
+        else if(checkPy(acceptSock)){
+            pythonSocket = acceptSock;
+            break;
+        }
+        else {
+            std::cout << "RETURNED SOCKET IS NOT PYTHON" << std::endl;
+            closesocket(acceptSocket);
+        }
+    }
     //STEP 5 Accept a connection accept(), connect()
     while (true) {
         SOCKET acceptSock = accept(serverSocket, NULL, NULL);
@@ -98,10 +116,12 @@ int routingInterface::serverStartup() {
         }
 
         std::thread(&routingInterface::receiveData, this, acceptSock).detach();
-        std::cout << "New client connected, socket: " << acceptSock << std::endl;
+        std::cout << "New client connected, socket: "  << acceptSock << std::endl;
     }
     return 0;
 }
+
+
 //Client Side////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int routingInterface::clientStartup() {
     deviceType = 1;
@@ -142,7 +162,7 @@ int routingInterface::clientStartup() {
 
         if (connect(clientSocket, (SOCKADDR*)&clientService, sizeof(clientService)) == SOCKET_ERROR) {
             std::cout << "Client: connect() - Failed to connect." << std::endl;
-            std::cout << "Press ENTER to scan again.";
+            std::cout << "Press ENTER to- scan again.";
             std::getline(std::cin, usrInput);
             closesocket(clientSocket);
         }
@@ -181,18 +201,23 @@ int routingInterface::sendData(const char* metaData, SOCKET sock) {
     }
     return 0;
 }
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void routingInterface::receiveData(SOCKET cliSocket) {
     std::cout << "Thread started for socket: " << cliSocket << std::endl;
     char receiveBuffer[1024];
+    int byteCount;
     while (true) {
-        int byteCount = recv(cliSocket, receiveBuffer, sizeof(receiveBuffer), 0);
+        byteCount = recv(cliSocket, receiveBuffer, sizeof(receiveBuffer)-1, 0);
         if (byteCount > 0) {
             receiveBuffer[byteCount] = '\0';
             printf("[Thread] received login data: %s\n", receiveBuffer);
 
-            std::string reply = "Message received\n"; // CHANGE INTO FUNCTION THAT SENDS "OK" signal TO CLIENT
-            send(cliSocket, reply.c_str(), reply.size(), 0);
+            if (receiveBuffer[0] =='0')
+                send(pythonSocket, receiveBuffer, byteCount, 0);
+            else if (receiveBuffer[0] == '2')
+                send(cliSocket, receiveBuffer, byteCount, 0);
         }
         else if (byteCount == 0) {
             printf("[Thread] disconnected");
@@ -212,4 +237,24 @@ void routingInterface::receiveData(SOCKET cliSocket) {
     }
     closesocket(cliSocket);
     std::cout << "Thread ending for socket: " << cliSocket << std::endl;
+}
+
+bool routingInterface::checkPy(SOCKET socket) {
+    char receiveBuffer[1024];
+    int byteCount;
+    std::string reply;
+    byteCount = recv(socket, receiveBuffer, sizeof(receiveBuffer) - 1, 0);
+    receiveBuffer[byteCount] = '\0';
+    if (!(std::strcmp(receiveBuffer,"Python"))) {
+        reply = "OK";
+        std::cout << "PYTHON IS FOUND" << std::endl;
+        send(socket, reply.c_str(), reply.size(), 0);
+        return true;
+    }
+    else {
+        reply = "NO";
+        std::cout << "PYTHON IS NOT FOUND, MESSAGE SENT INSTEAD:" << receiveBuffer << std::endl;
+        send(socket, reply.c_str(), reply.size(), 0);
+        return false;
+    }
 }

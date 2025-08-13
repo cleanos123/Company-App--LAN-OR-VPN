@@ -7,6 +7,7 @@
 #include <vector>
 #include <thread>
 #include <mutex>
+#include <algorithm>
 
 class routingInterface {
 private:
@@ -14,6 +15,7 @@ private:
     SOCKET clientSocket;
     SOCKET acceptSocket;
     SOCKET serverSocket;
+    SOCKET pythonSocket;
     std::vector <SOCKET> clients;
     std::mutex queueMutex;
     int deviceType;
@@ -24,6 +26,7 @@ public:
     int clientStartup();
     int sendData(const char* metaData, SOCKET socket);
     void receiveData(SOCKET socket);
+    bool checkPy(SOCKET socket);
     routingInterface();
     ~routingInterface();
     SOCKET getSock();

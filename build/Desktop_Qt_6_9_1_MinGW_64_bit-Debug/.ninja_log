@@ -1,104 +1,74 @@
 # ninja log v6
-26	128	7764928622317657	Bank_App_autogen/timestamp	18efae5e180f410f
-26	128	7764928622317657	Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-129	3424	7764928623345351	CMakeFiles/Bank_App.dir/mainwindow.cpp.obj	2e1f23cfdc3fb23
-26	128	7764928622317657	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/timestamp	18efae5e180f410f
-26	128	7764928622317657	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-182	2026	7764923341714519	CMakeFiles/Bank_App.dir/main.cpp.obj	4d261e9aeaf48d6f
-519	2475	7762058402260069	CMakeFiles/Bank_App.dir/Bank_App_autogen/mocs_compilation.cpp.obj	da514037fd284825
-2209	2372	7763207326764231	Bank_App.exe	4b1ff33a05db9fdd
-131	1473	7764928623365357	CMakeFiles/Bank_App.dir/connectinterface.cpp.obj	54208a48366ccd79
-17	123	7764933501437559	Bank_App_autogen/timestamp	18efae5e180f410f
-17	123	7764933501437559	Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-17	123	7764933501437559	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/timestamp	18efae5e180f410f
-17	123	7764933501437559	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-124	3245	7764933502509950	CMakeFiles/Bank_App.dir/mainwindow.cpp.obj	2e1f23cfdc3fb23
-3245	3422	7764933533714569	Bank_App.exe	fc2741b6cdbac6f6
-46	172	7765695533648335	Bank_App_autogen/timestamp	18efae5e180f410f
-46	172	7765695533648335	Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-46	172	7765695533648335	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/timestamp	18efae5e180f410f
-46	172	7765695533648335	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-175	1726	7765695534930200	CMakeFiles/Bank_App.dir/connectinterface.cpp.obj	54208a48366ccd79
-173	3484	7765695534913921	CMakeFiles/Bank_App.dir/mainwindow.cpp.obj	2e1f23cfdc3fb23
-3485	3902	7765695568026974	Bank_App.exe	fc2741b6cdbac6f6
-45	176	7765952139181593	Bank_App_autogen/timestamp	18efae5e180f410f
-45	176	7765952139181593	Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-45	176	7765952139181593	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/timestamp	18efae5e180f410f
-45	176	7765952139181593	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-177	3572	7765952140501921	CMakeFiles/Bank_App.dir/mainwindow.cpp.obj	2e1f23cfdc3fb23
-21	133	7765955062435510	Bank_App_autogen/timestamp	18efae5e180f410f
-21	133	7765955062435510	Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-21	133	7765955062435510	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/timestamp	18efae5e180f410f
-21	133	7765955062435510	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-134	3278	7765955063565615	CMakeFiles/Bank_App.dir/mainwindow.cpp.obj	2e1f23cfdc3fb23
-22	125	7765955348586786	Bank_App_autogen/timestamp	18efae5e180f410f
-22	125	7765955348586786	Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-22	125	7765955348586786	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/timestamp	18efae5e180f410f
-22	125	7765955348586786	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-125	3314	7765955349616789	CMakeFiles/Bank_App.dir/mainwindow.cpp.obj	2e1f23cfdc3fb23
-9	111	7765955618466548	Bank_App_autogen/timestamp	18efae5e180f410f
-9	111	7765955618466548	Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-9	111	7765955618466548	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/timestamp	18efae5e180f410f
-9	111	7765955618466548	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-111	3253	7765955619489461	CMakeFiles/Bank_App.dir/mainwindow.cpp.obj	2e1f23cfdc3fb23
-22	131	7765993896360903	Bank_App_autogen/timestamp	18efae5e180f410f
-22	131	7765993896360903	Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-22	131	7765993896360903	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/timestamp	18efae5e180f410f
-22	131	7765993896360903	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-133	1706	7765993897480896	CMakeFiles/Bank_App.dir/connectinterface.cpp.obj	54208a48366ccd79
-131	3304	7765993897460603	CMakeFiles/Bank_App.dir/mainwindow.cpp.obj	2e1f23cfdc3fb23
-3304	3665	7765993929190588	Bank_App.exe	fc2741b6cdbac6f6
-10	115	7766021200123190	Bank_App_autogen/timestamp	18efae5e180f410f
-10	115	7766021200123190	Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-10	115	7766021200123190	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/timestamp	18efae5e180f410f
-10	115	7766021200123190	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-116	3267	7766021201190528	CMakeFiles/Bank_App.dir/mainwindow.cpp.obj	2e1f23cfdc3fb23
-26	131	7766021457560755	Bank_App_autogen/timestamp	18efae5e180f410f
-26	131	7766021457560755	Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-26	131	7766021457560755	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/timestamp	18efae5e180f410f
-26	131	7766021457560755	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-134	1787	7766021458630758	CMakeFiles/Bank_App.dir/connectinterface.cpp.obj	54208a48366ccd79
-132	3376	7766021458610752	CMakeFiles/Bank_App.dir/mainwindow.cpp.obj	2e1f23cfdc3fb23
-3376	3577	7766021491061107	Bank_App.exe	fc2741b6cdbac6f6
-10	90	7766023751411591	Bank_App_autogen/timestamp	18efae5e180f410f
-10	90	7766023751411591	Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-10	90	7766023751411591	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/timestamp	18efae5e180f410f
-10	90	7766023751411591	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-90	142	7766023751801596	CMakeFiles/Bank_App.dir/Bank_App_autogen/mocs_compilation.cpp.obj	da514037fd284825
-22	563	7766023914236256	Bank_App_autogen/timestamp	18efae5e180f410f
-22	563	7766023914236256	Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-22	563	7766023914236256	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/timestamp	18efae5e180f410f
-22	563	7766023914236256	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-571	2262	7766023914846265	CMakeFiles/Bank_App.dir/connectinterface.cpp.obj	54208a48366ccd79
-564	2443	7766023914786248	CMakeFiles/Bank_App.dir/Bank_App_autogen/mocs_compilation.cpp.obj	da514037fd284825
-567	2451	7766023914816237	CMakeFiles/Bank_App.dir/main.cpp.obj	4d261e9aeaf48d6f
-569	3901	7766023914826263	CMakeFiles/Bank_App.dir/mainwindow.cpp.obj	2e1f23cfdc3fb23
-3901	4102	7766023948156548	Bank_App.exe	fc2741b6cdbac6f6
-23	124	7766026086199935	Bank_App_autogen/timestamp	18efae5e180f410f
-23	124	7766026086199935	Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-23	124	7766026086199935	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/timestamp	18efae5e180f410f
-23	124	7766026086199935	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-127	1672	7766026087237858	CMakeFiles/Bank_App.dir/connectinterface.cpp.obj	54208a48366ccd79
-125	3274	7766026087218174	CMakeFiles/Bank_App.dir/mainwindow.cpp.obj	2e1f23cfdc3fb23
-3274	3464	7766026118707867	Bank_App.exe	fc2741b6cdbac6f6
-10	120	7766028220368841	Bank_App_autogen/timestamp	18efae5e180f410f
-10	120	7766028220368841	Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-10	120	7766028220368841	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/timestamp	18efae5e180f410f
-10	120	7766028220368841	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-123	1742	7766028221498872	CMakeFiles/Bank_App.dir/connectinterface.cpp.obj	54208a48366ccd79
-121	3465	7766028221478857	CMakeFiles/Bank_App.dir/mainwindow.cpp.obj	2e1f23cfdc3fb23
-3466	3667	7766028254928840	Bank_App.exe	fc2741b6cdbac6f6
-10	110	7766033838736185	Bank_App_autogen/timestamp	18efae5e180f410f
-10	110	7766033838736185	Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-10	110	7766033838736185	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/timestamp	18efae5e180f410f
-10	110	7766033838736185	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-113	1725	7766033839766218	CMakeFiles/Bank_App.dir/connectinterface.cpp.obj	54208a48366ccd79
-111	3331	7766033839756216	CMakeFiles/Bank_App.dir/mainwindow.cpp.obj	2e1f23cfdc3fb23
-3331	3519	7766033871956203	Bank_App.exe	fc2741b6cdbac6f6
 41	193	7766440793117443	Bank_App_autogen/timestamp	18efae5e180f410f
 41	193	7766440793117443	Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
+194	3568	7766440794647459	CMakeFiles/Bank_App.dir/mainwindow.cpp.obj	2e1f23cfdc3fb23
 41	193	7766440793117443	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/timestamp	18efae5e180f410f
 41	193	7766440793117443	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
-197	2121	7766440794677453	CMakeFiles/Bank_App.dir/connectinterface.cpp.obj	54208a48366ccd79
-194	3568	7766440794647459	CMakeFiles/Bank_App.dir/mainwindow.cpp.obj	2e1f23cfdc3fb23
+567	2451	7766023914816237	CMakeFiles/Bank_App.dir/main.cpp.obj	4d261e9aeaf48d6f
+564	2443	7766023914786248	CMakeFiles/Bank_App.dir/Bank_App_autogen/mocs_compilation.cpp.obj	da514037fd284825
 3568	3976	7766440828387436	Bank_App.exe	fc2741b6cdbac6f6
+197	2121	7766440794677453	CMakeFiles/Bank_App.dir/connectinterface.cpp.obj	54208a48366ccd79
+63	195	7767327055835225	Bank_App_autogen/timestamp	18efae5e180f410f
+63	195	7767327055835225	Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
+63	195	7767327055835225	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/timestamp	18efae5e180f410f
+63	195	7767327055835225	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
+22	123	7767327473919848	Bank_App_autogen/timestamp	18efae5e180f410f
+22	123	7767327473919848	Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
+22	123	7767327473919848	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/timestamp	18efae5e180f410f
+22	123	7767327473919848	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
+24	129	7767328101801261	Bank_App_autogen/timestamp	18efae5e180f410f
+24	129	7767328101801261	Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
+24	129	7767328101801261	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/timestamp	18efae5e180f410f
+24	129	7767328101801261	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
+132	1915	7767328102881265	CMakeFiles/Bank_App.dir/connectinterface.cpp.obj	54208a48366ccd79
+23	133	7767330555436990	Bank_App_autogen/timestamp	18efae5e180f410f
+23	133	7767330555436990	Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
+23	133	7767330555436990	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/timestamp	18efae5e180f410f
+23	133	7767330555436990	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
+136	1716	7767330556566989	CMakeFiles/Bank_App.dir/connectinterface.cpp.obj	54208a48366ccd79
+23	132	7767330686167839	Bank_App_autogen/timestamp	18efae5e180f410f
+23	132	7767330686167839	Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
+23	132	7767330686167839	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/timestamp	18efae5e180f410f
+23	132	7767330686167839	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
+135	1792	7767330687287835	CMakeFiles/Bank_App.dir/connectinterface.cpp.obj	54208a48366ccd79
+22	132	7767331260968636	Bank_App_autogen/timestamp	18efae5e180f410f
+22	132	7767331260968636	Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
+22	132	7767331260968636	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/timestamp	18efae5e180f410f
+22	132	7767331260968636	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
+135	1786	7767331262088951	CMakeFiles/Bank_App.dir/connectinterface.cpp.obj	54208a48366ccd79
+133	3434	7767331262078639	CMakeFiles/Bank_App.dir/mainwindow.cpp.obj	2e1f23cfdc3fb23
+3434	3818	7767331295088638	Bank_App.exe	fc2741b6cdbac6f6
+23	128	7767376993632379	Bank_App_autogen/timestamp	18efae5e180f410f
+23	128	7767376993632379	Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
+23	128	7767376993632379	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/timestamp	18efae5e180f410f
+23	128	7767376993632379	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
+130	1764	7767376994699612	CMakeFiles/Bank_App.dir/connectinterface.cpp.obj	54208a48366ccd79
+128	3362	7767376994679390	CMakeFiles/Bank_App.dir/mainwindow.cpp.obj	2e1f23cfdc3fb23
+24	127	7767377290369720	Bank_App_autogen/timestamp	18efae5e180f410f
+24	127	7767377290369720	Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
+24	127	7767377290369720	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/timestamp	18efae5e180f410f
+24	127	7767377290369720	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
+22	131	7767377661811579	Bank_App_autogen/timestamp	18efae5e180f410f
+22	131	7767377661811579	Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
+22	131	7767377661811579	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/timestamp	18efae5e180f410f
+22	131	7767377661811579	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
+133	1735	7767377662921583	CMakeFiles/Bank_App.dir/connectinterface.cpp.obj	54208a48366ccd79
+23	127	7767378659787036	Bank_App_autogen/timestamp	18efae5e180f410f
+23	127	7767378659787036	Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
+23	127	7767378659787036	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/timestamp	18efae5e180f410f
+23	127	7767378659787036	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
+130	1724	7767378660854462	CMakeFiles/Bank_App.dir/connectinterface.cpp.obj	54208a48366ccd79
+128	3308	7767378660832789	CMakeFiles/Bank_App.dir/mainwindow.cpp.obj	2e1f23cfdc3fb23
+3308	3496	7767378692634476	Bank_App.exe	fc2741b6cdbac6f6
+37	203	7767503310100862	Bank_App_autogen/timestamp	18efae5e180f410f
+37	203	7767503310100862	Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
+37	203	7767503310100862	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/timestamp	18efae5e180f410f
+37	203	7767503310100862	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
+204	4207	7767503311760863	CMakeFiles/Bank_App.dir/mainwindow.cpp.obj	2e1f23cfdc3fb23
+4207	4416	7767503351794873	Bank_App.exe	fc2741b6cdbac6f6
+10	118	7767525497645979	Bank_App_autogen/timestamp	18efae5e180f410f
+10	118	7767525497645979	Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
+10	118	7767525497645979	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/timestamp	18efae5e180f410f
+10	118	7767525497645979	C:/Users/carlo/Desktop/CODING/CODING PROJECTS/Bank_App/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Bank_App_autogen/mocs_compilation.cpp	18efae5e180f410f
+119	3307	7767525498740785	CMakeFiles/Bank_App.dir/mainwindow.cpp.obj	2e1f23cfdc3fb23
+3307	3500	7767525530620983	Bank_App.exe	fc2741b6cdbac6f6

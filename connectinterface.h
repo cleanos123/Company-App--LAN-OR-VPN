@@ -4,8 +4,9 @@
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #include <string>
-#include <vector>
+//#include <vector>
 #include <mutex>
+#include <unordered_map>
 
 class routingInterface {
 private:
@@ -16,7 +17,8 @@ private:
     SOCKET pythonSocket;
     // NOT NEEDED FOR NOW MAYBE TO SAVE PAST CLIENTS IP ETC.
     //std::vector <SOCKET> clients;
-    std::mutex queueMutex;
+    std::mutex socketMapMutex;
+    std::unordered_map<SOCKET, SOCKET> pythonReplyMap;
     int deviceType;
 
 

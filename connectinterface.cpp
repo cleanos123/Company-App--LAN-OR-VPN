@@ -218,15 +218,32 @@ void routingInterface::receiveData(SOCKET cliSocket) {
         byteCount = recv(cliSocket, receiveBuffer, sizeof(receiveBuffer) - 1, 0);
         if (byteCount > 0) {
             receiveBuffer[byteCount] = '\0';
-            printf("[Thread] received login data: %s\n", receiveBuffer);
-
-            if (receiveBuffer[0] == '0') {
-                send(pythonSocket, receiveBuffer, byteCount, 0);
+            std::string msg(receiveBuffer);
+            printf("[Thread %d] received data: %s\n", cliSocket, msg.c_str());
+            if (cliSocket != pythonSocket) {
+                {
+                    std::lock_guard<std::mutex> lock(socketMapMutex);
+                    pythonReplyMap[pythonSocket] = cliSocket; // Remember who sent this
+                }
+                send(pythonSocket, msg.c_str(), byteCount, 0);
                 std::cout << "SEND TO PYTHON" << std::endl;
             }
-            else if (receiveBuffer[0] == '2') {
-                send(cliSocket, receiveBuffer, byteCount, 0);
-                std::cout << "SEND TO CLIENT" << std::endl;
+            else{
+                SOCKET targetSocket = INVALID_SOCKET;
+                    {
+                    std::lock_guard<std::mutex> lock(socketMapMutex);
+                    auto it = pythonReplyMap.find(pythonSocket);
+                    if (it != pythonReplyMap.end()) {
+                        targetSocket = it->second;
+                    }
+                    if (targetSocket != INVALID_SOCKET) {
+                        send(targetSocket, msg.c_str(), byteCount, 0);
+                        std::cout << "SEND TO CLIENT " << targetSocket << std::endl;
+                    }
+                    else {
+                        std::cout << "No client waiting for Python reply" << std::endl;
+                    }
+                }
             }
         }
         else if (byteCount == 0) {

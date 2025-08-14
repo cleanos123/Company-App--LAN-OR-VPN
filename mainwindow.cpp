@@ -61,9 +61,11 @@ void MainWindow::on_loginBut_clicked(){
         password = ui->inputPass->text().toStdString();  //moves email and password to be sent to database (not in Qstring)
         std::string data = "0\n" + email + "\n" + password;
         message = user.sendData(data.c_str(), user.getSock());
-        message.erase(0,1);
-        if(message == "OK"){
-            std::cout << "LOGGED IN";
+        std::cout << message << std::endl;
+        message.erase(0,2);
+        std::cout << message << std::endl;
+        if(message.compare("OK") == 0){
+            std::cout << "LOGGED IN" << std::endl;
         }
         else{
             std::cout << "NOT LOGGED IN" << std::endl;

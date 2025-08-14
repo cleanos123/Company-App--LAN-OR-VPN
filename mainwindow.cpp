@@ -10,6 +10,7 @@
 routingInterface user;
 std::string email = "";
 std::string password = "";
+std::string message = "";
 const int CLIENT = 1;
 const int SERVER = 2;
 QString empty = "";
@@ -37,8 +38,7 @@ bool isValid(){
     return false;
 }
 
-void MainWindow::on_loginBut_clicked()
-{
+void MainWindow::on_loginBut_clicked(){
     const QColor c(0xffe00000);
     if (ui->inputEmail->text() == empty){
         ui->emailText->setTextColor(c);
@@ -60,7 +60,13 @@ void MainWindow::on_loginBut_clicked()
         email = ui->inputEmail->text().toStdString();
         password = ui->inputPass->text().toStdString();  //moves email and password to be sent to database (not in Qstring)
         std::string data = "0\n" + email + "\n" + password;
-        user.sendData(data.c_str(), user.getSock());
+        message = user.sendData(data.c_str(), user.getSock());
+        message.erase(0,1);
+        if(message == "OK"){
+            std::cout << "LOGGED IN";
+        }
+        else{
+            std::cout << "NOT LOGGED IN" << std::endl;
+        }
     }
-
 }

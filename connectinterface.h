@@ -5,9 +5,7 @@
 #include <ws2tcpip.h>
 #include <string>
 #include <vector>
-#include <thread>
 #include <mutex>
-#include <algorithm>
 
 class routingInterface {
 private:
@@ -16,7 +14,8 @@ private:
     SOCKET acceptSocket;
     SOCKET serverSocket;
     SOCKET pythonSocket;
-    std::vector <SOCKET> clients;
+    // NOT NEEDED FOR NOW MAYBE TO SAVE PAST CLIENTS IP ETC.
+    //std::vector <SOCKET> clients;
     std::mutex queueMutex;
     int deviceType;
 
@@ -24,7 +23,7 @@ private:
 public:
     int serverStartup();
     int clientStartup();
-    int sendData(const char* metaData, SOCKET socket);
+    std::string sendData(const char* metaData, SOCKET socket);
     void receiveData(SOCKET socket);
     bool checkPy(SOCKET socket);
     routingInterface();

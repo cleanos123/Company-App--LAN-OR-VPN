@@ -6,16 +6,8 @@
 #include <string>
 #include <ws2tcpip.h>
 #include <thread>
-#include <mutex>
-
-//HELPER FUNCTIONS/////////////////////////////////////////////////////
-bool findSock(const std::vector <SOCKET>& vect, SOCKET aS) {
-    for (SOCKET elem : vect) {
-        if (elem == aS)
-            return true;
-    }
-    return false;
-}
+//#include <mutex>
+//#include <algorithm>
 //////////////////////////////////////
 
 // SERVER SIDE
@@ -90,8 +82,9 @@ int routingInterface::serverStartup() {
             std::cout << "accept() failed: " << WSAGetLastError() << std::endl;
             continue;
         }
-        else if(checkPy(acceptSock)){
+        else if (checkPy(acceptSock)) {
             pythonSocket = acceptSock;
+            std::thread(&routingInterface::receiveData, this, pythonSocket).detach();
             break;
         }
         else {
@@ -99,24 +92,22 @@ int routingInterface::serverStartup() {
             closesocket(acceptSocket);
         }
     }
-    //STEP 5 Accept a connection accept(), connect()
+    //STEP 5 Accept a connection accept(), connect() (CLIENTS)
     while (true) {
         SOCKET acceptSock = accept(serverSocket, NULL, NULL);
-        std::cout << "accept() returned socket: " << acceptSock << std::endl;
         if (acceptSock == INVALID_SOCKET) {
             std::cout << "accept() failed: " << WSAGetLastError() << std::endl;
             // Change design
             continue;
         }
+        /* NOT REQUIRED FOR NOW
         {
             std::lock_guard<std::mutex> lock(queueMutex);
-            if (!findSock(clients, acceptSock)) {
-                clients.push_back(acceptSock);
-            }
-        }
+            clients.push_back(acceptSock);
+        } */
 
         std::thread(&routingInterface::receiveData, this, acceptSock).detach();
-        std::cout << "New client connected, socket: "  << acceptSock << std::endl;
+        std::cout << "New client connected, socket: " << acceptSock << std::endl;
     }
     return 0;
 }
@@ -182,24 +173,39 @@ SOCKET routingInterface::getSock() {
         return clientSocket;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-int routingInterface::sendData(const char* metaData, SOCKET sock) {
+std::string routingInterface::sendData(const char* metaData, SOCKET sock) {
+    char receiveBuffer[1024];
+    char* end = nullptr;
     if (metaData == nullptr) {
         printf("sendData error: metaData is null\n.");
-        return -1;
+        return "";
     }
     if (sock == INVALID_SOCKET) {
         printf("sendData error: Invalid Socket.\n");
-        return -1;
+        return "";
     }
     int byteCount = send(sock, metaData, strlen(metaData), 0);
     if (byteCount == SOCKET_ERROR) {
         printf("Server send error %ld.\n", WSAGetLastError());
-        return -1;
+        return "";
     }
     else {
         printf("Server: sent %ld bytes \n", byteCount);
+        byteCount = recv(sock, receiveBuffer, sizeof(receiveBuffer) - 1, 0);
+        if (byteCount > 0) {
+            receiveBuffer[byteCount] = '\0';
+            return std::string(receiveBuffer);
+        }
+        else if (byteCount == 0) {
+            printf("[Thread] disconnected");
+            return "";
+        }
+        else {
+            printf("[Thread] recv() failed: %d\n", WSAGetLastError());
+            return "";
+        }
     }
-    return 0;
+    return "";
 }
 
 
@@ -209,15 +215,19 @@ void routingInterface::receiveData(SOCKET cliSocket) {
     char receiveBuffer[1024];
     int byteCount;
     while (true) {
-        byteCount = recv(cliSocket, receiveBuffer, sizeof(receiveBuffer)-1, 0);
+        byteCount = recv(cliSocket, receiveBuffer, sizeof(receiveBuffer) - 1, 0);
         if (byteCount > 0) {
             receiveBuffer[byteCount] = '\0';
             printf("[Thread] received login data: %s\n", receiveBuffer);
 
-            if (receiveBuffer[0] =='0')
+            if (receiveBuffer[0] == '0') {
                 send(pythonSocket, receiveBuffer, byteCount, 0);
-            else if (receiveBuffer[0] == '2')
+                std::cout << "SEND TO PYTHON" << std::endl;
+            }
+            else if (receiveBuffer[0] == '2') {
                 send(cliSocket, receiveBuffer, byteCount, 0);
+                std::cout << "SEND TO CLIENT" << std::endl;
+            }
         }
         else if (byteCount == 0) {
             printf("[Thread] disconnected");
@@ -228,13 +238,10 @@ void routingInterface::receiveData(SOCKET cliSocket) {
             break;
         }
     }
-    {
+    /*{
         std::lock_guard<std::mutex> lock(queueMutex);
-        auto it = std::find(clients.begin(), clients.end(), cliSocket);
-        if (it != clients.end()) {
-            clients.erase(it);
-        }
-    }
+        clients.push_back(cliSocket);
+    } MAYBE FOR FUTURE IMPLEMENTATION*/
     closesocket(cliSocket);
     std::cout << "Thread ending for socket: " << cliSocket << std::endl;
 }
@@ -245,7 +252,7 @@ bool routingInterface::checkPy(SOCKET socket) {
     std::string reply;
     byteCount = recv(socket, receiveBuffer, sizeof(receiveBuffer) - 1, 0);
     receiveBuffer[byteCount] = '\0';
-    if (!(strcmp(receiveBuffer,"Python"))) {
+    if (!(strcmp(receiveBuffer, "Python"))) {
         reply = "OK";
         std::cout << "PYTHON IS FOUND" << std::endl;
         send(socket, reply.c_str(), reply.size(), 0);
